@@ -37,17 +37,37 @@ namespace Tests
         }
 
         [Test]
-        public void GroupCostBySize3()
+        public void GroupOrderCostBySize3()
         {
             var excepted = new List<int> { 63, 162, 261, 109 };
             Assert.AreEqual(excepted, groupingService.Grouping(orders, 3, x => x.Cost));
         }
 
         [Test]
-        public void GroupPriceBySize4()
+        public void GroupOrderPriceBySize4()
         {
             var excepted = new List<int> { 700, 1220, 1390 };
             Assert.AreEqual(excepted, groupingService.Grouping(orders, 4, p => p.Price));
+        }
+
+        [Test]
+        public void GroupProductCostBySize3()
+        {
+            List<Product> products = new List<Product>() {
+            new Product() { Id = 1, Cost = 10 },
+            new Product() { Id = 2, Cost = 21 },
+            new Product() { Id = 3, Cost = 32 },
+            new Product() { Id = 4, Cost = 43 },
+            new Product() { Id = 5, Cost = 54 },
+            new Product() { Id = 6, Cost = 65 },
+            new Product() { Id = 7, Cost = 76 },
+            new Product() { Id = 8, Cost = 87 },
+            new Product() { Id = 9, Cost = 98 },
+            new Product() { Id = 10, Cost = 109 },
+        };
+
+            var excepted = new List<int> { 63, 162, 261, 109 };
+            Assert.AreEqual(excepted, groupingService.Grouping(products, 3, x => x.Cost));
         }
     }
 }

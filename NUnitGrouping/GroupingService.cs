@@ -69,12 +69,12 @@ namespace NUnitGrouping
 
             for (int indexCount = 0; indexCount <= groupSet; indexCount++)
             {
-                var groupSource = source.Skip(indexCount * groupSize).Take(groupSet == indexCount ? remainder : groupSize);
-                int sum = 0;
-                foreach (var s in groupSource)
-                {
-                    sum += selectProp(s);
-                }
+                var sum = source.Skip(indexCount * groupSize).Take(groupSet == indexCount ? remainder : groupSize).Sum(selectProp);
+                //int sum = 0;
+                //foreach (var s in groupSource)
+                //{
+                //    sum += selectProp(s);
+                //}
 
                 yield return (sum);
                 //result.Add(sum);
